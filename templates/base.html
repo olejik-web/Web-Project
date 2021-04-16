@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="../static/style.css" type="text/css">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"> </head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <header>
+        <nav class="navbar navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="/"><img src="../static/img/logo.png" alt="not found" width='100px' height='100px'> <span class='span1'>Книга памяти МОУ СОШ №41</span></a>
+                <ul class="navbar-nav" id="navbar-nav-2">
+                    <li class="nav-item" id="my-nav-item"> <a class="nav-link active" aria-current="page" href="#">Главная</a> </li>
+                    <li class="nav-item" id="my-nav-item"> <a class="nav-link" href="#">Книга</a> </li>
+                    <li class="nav-item" id="my-nav-item"> <a class="nav-link" href="#">Статьи</a> </li>
+                    <li class="nav-item" id="my-nav-item"> <a class="nav-link" href="#">Новости</a> </li>
+                    <li class="nav-item" id="my-nav-item"> <a class="nav-link" href="#">История</a> </li>
+                    <li class="nav-item" id="my-nav-item"> <a class="nav-link" href="#">Пользователи</a> </li>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">Главная</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Книга</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Статьи</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Новости</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">История</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Пользователи</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000"> <a href="/" style='disply: block;'><img src="../static/img/slider1/img1.jpg" class="d-block w-100" alt="not found"></a>
+                      <a href="/" style='disply: block;'>
+                       <div class="carousel-caption d-none d-md-block bg-secondary">
+                        <h5>Главная</h5>
+                        <p>Вся информация на сайте ждет Вас на этой странице.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000"><a href="/" style='disply: block;'> <img src="../static/img/slider1/img2.jpg" class="d-block w-100" alt="not found"></a>
+                   <a href="/" style='disply: block;'>
+                    <div class="carousel-caption d-none d-md-block bg-secondary">
+                        <h5>Книга</h5>
+                        <p>В этом разделе собрана информация обо всех родственниках нашей школы, принимавших участие в Великой Отечественной войне.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item"> <a href="/" style='disply: block;'><img src="../static/img/slider1/img3.jpg" class="d-block w-100" alt="not found"></a>
+                   <a href="/" style='disply: block;'>
+                    <div class="carousel-caption d-none d-md-block bg-secondary">
+                        <h5>Статьи</h5>
+                        <p>В разделе статьи собраны самые интересные статьи пользователей сайта.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item"><a href="/" style='disply: block;'> <img src="../static/img/slider1/img4.jpg" class="d-block w-100" alt="not found"></a>
+                   <a href="/" style='disply: block;'>
+                    <div class="carousel-caption d-none d-md-block bg-secondary" style='margin-bottom: 100px;'>
+                        <h5>Новости</h5>
+                        <p>В этом разделе собраны новости портала.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item"><a href="/" style='disply: block;'> <img src="../static/img/slider1/img5.png" class="d-block w-100" alt="not found"></a>
+                   <a href="/" style='disply: block;'>
+                    <div class="carousel-caption d-none d-md-block bg-secondary">
+                        <h5>История</h5>
+                        <p>В этом разделе собрана информация о Великой Отечественной войне.</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Предыдущий</span> </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Следующий</span> </button>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

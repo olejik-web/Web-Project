@@ -1,0 +1,131 @@
+@font-face {
+    font-family: May;
+    src: url(fonts/May-Regular/May-Regular.ttf);
+}
+
+* {
+    font-family: May;
+}
+
+@media (min-width: 600px) {
+    .logo {
+        width: 290px;
+    }
+    .logo img {
+        width: 60px;
+        height: 60px;
+    }
+    .span1 {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    .navbar-toggler {
+        display: none;
+    }
+    .navbar-collapse {
+        display: none
+    }
+    #navbar-nav-2 {
+        display: flex;
+    }
+    #carouselExampleDark .carousel-inner .carousel-item .carousel-caption h5 {
+        font-size: 50px;
+    }
+    #carouselExampleDark .carousel-inner .carousel-item .carousel-caption p {
+        font-size: 30px;
+    }
+    .main-card {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .span1 {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    .logo {
+        width: 260px;
+    }
+    .logo img {
+        width: 30px;
+        height: 30px;
+    }
+    .navbar-toggler {
+        display: block;
+        margin-top: 10px;
+    }
+    #navbar-nav-2 {
+        display: none;
+    }
+    #carouselExampleDark .carousel-inner .carousel-item .carousel-caption h5 {
+        font-size: 20px;
+    }
+    #carouselExampleDark .carousel-inner .carousel-item .carousel-caption p {
+        font-size: 10px;
+    }
+    
+    .main-card {
+        font-size: 20px;
+    }
+}
+
+.main-card {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.main-card .card-header{
+    text-align: center;
+    font-weight: bold;
+}
+
+.main-card .card-body{
+    text-align: center;
+    font-weight: 700;
+}
+
+#h2 {
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#navbar-nav-2 {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20%;
+}
+
+#my-nav-item {
+    margin-right: 5%;
+}
+
+.nav-link {
+    font-size: 30px;
+}
+
+#carouselExampleDark {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+#carouselExampleDark .carousel-inner .carousel-item img {
+    height: 5%;
+}
+
+#carouselExampleDark .carousel-inner .carousel-item .carousel-caption {
+    margin-bottom: 40px;
+    padding: 20px 20px;
+}
+
+.span1 {
+    display: inline-block;
+}
+
+.logo {
+    background-color: maroon;
+    padding: 10px 10px;
+}
