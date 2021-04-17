@@ -7,6 +7,26 @@
     font-family: May;
 }
 
+.news {
+    padding-top: 20px;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.news .card-text {
+    font-size: 20px;
+}
+
+.text-muted {
+    font-size: 15px;
+}
+
 @media (min-width: 600px) {
     .logo {
         width: 290px;
@@ -87,6 +107,7 @@
 }
 
 #h2 {
+    margin-top: 20px;
     font-size: 40px;
     text-align: center;
     font-weight: bold;
@@ -96,6 +117,10 @@
     flex-direction: row;
     justify-content: space-between;
     margin-right: 20%;
+}
+
+.footer {
+    margin-top: 20px;
 }
 
 #my-nav-item {
@@ -114,6 +139,10 @@
 
 #carouselExampleDark .carousel-inner .carousel-item img {
     height: 5%;
+}
+
+footer .nav img {
+    width: 40px;
 }
 
 #carouselExampleDark .carousel-inner .carousel-item .carousel-caption {
