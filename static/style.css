@@ -8,7 +8,7 @@
 }
 
 .news {
-    padding-top: 20px;
+    width: 95%;
     padding-right: 5%;
     padding-left: 5%;
 }
@@ -59,10 +59,9 @@
     }
 }
 
-@media (max-width: 300px) {
-    footer .d-grid {
-        padding-top: 20px;
-        margin-left: -30px;
+@media (max-width: 360px) {
+    footer .d-grid .btn{
+        font-size: 1.5rem;
     }
 }
 
@@ -159,10 +158,6 @@ footer .d-grid {
     margin: 0 auto;
     margin-top: 30px;
 }
-
-/*#carouselExampleDark .carousel-inner .carousel-item img {
-    height: 5%;
-}*/
 
 footer .nav i {
     font-size: 2rem;
