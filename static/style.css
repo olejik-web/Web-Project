@@ -59,6 +59,13 @@
     }
 }
 
+@media (max-width: 300px) {
+    footer .d-grid {
+        padding-top: 20px;
+        margin-left: -30px;
+    }
+}
+
 @media (max-width: 600px) {
     .span1 {
         font-size: 20px;
@@ -84,7 +91,6 @@
     #carouselExampleDark .carousel-inner .carousel-item .carousel-caption p {
         font-size: 10px;
     }
-    
     .main-card {
         font-size: 20px;
     }
@@ -96,12 +102,12 @@
     margin-top: 20px;
 }
 
-.main-card .card-header{
+.main-card .card-header {
     text-align: center;
     font-weight: bold;
 }
 
-.main-card .card-body{
+.main-card .card-body {
     text-align: center;
     font-weight: 700;
 }
@@ -119,8 +125,25 @@
     margin-right: 20%;
 }
 
-.footer {
+footer {
     margin-top: 20px;
+}
+
+footer .nav {
+    padding-top: 10px;
+}
+
+footer .btn {
+    font-size: 2.5rem;
+}
+
+footer .register-button {
+    margin-bottom: 20px;
+}
+
+footer .d-grid {
+    padding-top: 20px;
+    text-align: center;
 }
 
 #my-nav-item {
@@ -137,12 +160,12 @@
     margin-top: 30px;
 }
 
-#carouselExampleDark .carousel-inner .carousel-item img {
+/*#carouselExampleDark .carousel-inner .carousel-item img {
     height: 5%;
-}
+}*/
 
-footer .nav img {
-    width: 40px;
+footer .nav i {
+    font-size: 2rem;
 }
 
 #carouselExampleDark .carousel-inner .carousel-item .carousel-caption {
