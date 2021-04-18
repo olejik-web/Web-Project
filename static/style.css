@@ -7,6 +7,25 @@
     font-family: May;
 }
 
+form {
+    width: 70%;
+    justify-content: center;
+}
+
+form .btn {
+    font-size: 1.5rem;
+}
+
+.alert {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+form label {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
 .news {
     width: 95%;
     padding-right: 5%;
@@ -24,7 +43,14 @@
 }
 
 .text-muted {
-    font-size: 15px;
+    font-size: 17px;
+}
+
+.heros .col .btn{
+    font-size: 1.4rem;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 @media (min-width: 600px) {
