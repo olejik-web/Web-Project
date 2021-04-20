@@ -19,6 +19,13 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+class LoginForm(FlaskForm):
+    email = StringField('Почта пользователя', 
+                       validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    submit = SubmitField('Войти')
+
+
 class RegisterForm(FlaskForm):
     email = EmailField('Почта', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
@@ -37,9 +44,6 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    db_session.global_init("db/mars.db")
-    db_sess = db_session.create_session()
-    users = [user for user in db_sess.query(User).all()]
     return render_template('index.html', title='Главная')
 
 
@@ -70,19 +74,44 @@ def reqister():
         if form.password.data != form.password_again.data:
             return render_template('register.html', title='Регистрация',
                                            form=form,
-                                           message="Пароли не совпадают!") 
-        if '@' not in form.email.data:
+                                           message="Пароли не совпадают!")
+        db_sess = db_session.create_session()
+        if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('register.html', title='Регистрация',
-                                           form=form,
-                                           message="Проверьте правильность ввода адреса электронной почты!") 
+                                   form=form,
+                                   message="Такой пользователь уже есть")
+        user = User (
+            name=form.name.data,
+            email=form.email.data,
+            about=form.about.data
+        )
+        user.set_password(form.password.data)
+        db_sess.add(user)
+        db_sess.commit()
         return redirect('/login')
-    return render_template('register.html', title='Регистрация', form=form)
+    return render_template('register.html', title='Регистрация', form=form, 
+                           message='')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user)
+            return redirect("/")
+        return render_template('login.html',
+                               message="Неправильный логин или пароль",
+                               form=form)
+    return render_template('login.html', title='Авторизация', form=form, 
+                           message='')
 
 
 def main():  
+    db_session.global_init("db/database.db")
     app.run(port=8080, host='127.0.0.1')
-    # db_session.global_init("db/mars.db")
-    # db_sess = db_session.create_session()    
 
 
 if __name__ == '__main__':

@@ -7,9 +7,38 @@
     font-family: May;
 }
 
+
+#profile-info {
+    margin-top: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#profile-container {
+    width: 60%;
+    padding: 2% 2%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
 form {
     width: 70%;
     justify-content: center;
+}
+
+#profile-photo {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#profile-header {
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
 }
 
 form .btn {

@@ -1,32 +1,27 @@
 {% extends "base.html" %} {% block content %}
 <h2 id='h2'>Регистрация</h2> 
-<form action='' method="post" style='margin: 0 auto;' novalidate> {{ form.hidden_tag() }}
-    <div class="mb-3"> {{ form.email.label(class="form-label") }} {{ form.email(type="email", class="form-control") }} {% for error in form.email.errors %}
-        <div class="alert alert-danger" role="alert"> {{ error }} </div> {% endfor %} 
-        {% if message != '' %}
-            <div class="alert alert-danger" role="alert"> {{ message }} </div>
-        {% endif %}
+<form action='' method="post" style='margin: 0 auto;'> {{ form.hidden_tag() }}
+    <div class="mb-3"> {{ form.email.label(class="form-label") }} {{ form.email(style='font-size: 1.4rem;', type="email", class="form-control") }}
         </div>
     <div class="mb-3">
         <label for="inputPassword4" class="form-label">{{ form.password.label }}</label>
-        <div>{{ form.password(type="password", class="form-control") }}</div> {% for error in form.password.errors %}
-        <p class="alert alert-danger" role="alert"> {{ error }} </p> {% endfor %} </div>
+        <div>{{ form.password(style='font-size: 1.4rem;', type="password", class="form-control") }}</div></div>
     <div class="mb-3">
         <label class="form-label">{{ form.password_again.label }}</label>
-        <div>{{ form.password_again(type="text", class="form-control") }}</div>
-    </div> {% for error in form.password_again.errors %}
-    <p class="alert alert-danger" role="alert"> {{ error }} </p> {% endfor %}
+        <div>{{ form.password_again(style='font-size: 1.4rem;', type="text", class="form-control") }}</div>
+    </div>
     <div class="mb-3">
         <label class="form-label">{{ form.name.label }}</label>
-        <div>{{ form.name(type="text", class="form-control") }}</div>
-    </div> {% for error in form.name.errors %}
-    <p class="alert alert-danger" role="alert"> {{ error }} </p> {% endfor %}
+        <div>{{ form.name(style='font-size: 1.4rem;', type="text", class="form-control") }}</div>
+    </div> 
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">{{ form.about.label }}</label>
-        <div>{{ form.about(class="form-control", rows="3") }}</div>
-    </div> {% for error in form.about.errors %}
-    <p class="alert alert-danger" role="alert"> {{ error }} </p> {% endfor %}
+        <div>{{ form.about(style='font-size: 1.4rem;', class="form-control", rows="3") }}</div>
+    </div>
+    {% if message != '' %}
+        <div class="alert alert-danger" role="alert"> {{ message }} </div>
+    {% endif %}
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться!</button>
     </div>
 </form> {% endblock %}

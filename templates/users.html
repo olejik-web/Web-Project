@@ -1,14 +1,62 @@
-{% extends 'base.html' %} 
-{% block content %}
-    <h2 id='h2'>Пользователи</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4 news heros" style="margin: 0 auto;">
+{% extends 'base.html' %} {% block content %} {% if current_user.is_authenticated %}
+<h2 id='h2'>Мой профиль</h2>
+<div id='profile-container' class="container-fluid bg-light">
+    <div class="row">
+        <div class="col-6">
+            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                        The current link item
+                      </a> <a href="#" class="list-group-item list-group-item-action">A second link item</a> <a href="#" class="list-group-item list-group-item-action">A third link item</a> <a href="#" class="list-group-item list-group-item-action">A fourth link item</a> <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a> </div>
+        </div>
+        <div class="col-6 profile">
+            <div class="col row profile-info">
+                <div class="row">
+                    <!--<h3 id='profile-header'>Фото</h3>--><img src="../static/img/logo.png" class="img-fluid" id="profile-photo" alt="..."> </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id='profile-info' class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">{{ current_user.name }}</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">{{ current_user.about }}</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endif %}
+<h2 id='h2'>Пользователи</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4 news heros" style="margin: 0 auto;">
     <div class="col">
         <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Lorem ipsum dolor sit.</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -17,8 +65,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -27,8 +74,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -37,8 +83,7 @@
             <div class="card-body">
                 <h5 class="card-title">Lorem ipsum dolor sit.</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -47,8 +92,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -57,8 +101,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -67,8 +110,7 @@
             <div class="card-body">
                 <h5 class="card-title">Lorem ipsum dolor sit.</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -77,8 +119,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -87,8 +128,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -97,8 +137,7 @@
             <div class="card-body">
                 <h5 class="card-title">Lorem ipsum dolor sit.</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -107,8 +146,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -117,8 +155,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -127,8 +164,7 @@
             <div class="card-body">
                 <h5 class="card-title">Lorem ipsum dolor sit.</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -137,8 +173,7 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
@@ -147,10 +182,8 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <a href="#" class="btn btn-primary">Смотреть статью...</a>
+            </div> <a href="#" class="btn btn-primary">Смотреть статью...</a>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
     </div>
-</div>
-{% endblock %}
+</div> {% endblock %}
