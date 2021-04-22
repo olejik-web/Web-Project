@@ -20,8 +20,8 @@ login_manager.init_app(app)
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Почта пользователя', 
-                       validators=[DataRequired()])
+    email = StringField('Почта пользователя',
+                        validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     submit = SubmitField('Войти')
 
@@ -29,7 +29,7 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     email = EmailField('Почта', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
-    password_again = PasswordField('Повторите пароль', 
+    password_again = PasswordField('Повторите пароль',
                                    validators=[DataRequired()])
     name = StringField('Имя пользователя', validators=[DataRequired()])
     about = TextAreaField("Немного о себе")
@@ -73,14 +73,14 @@ def reqister():
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:
             return render_template('register.html', title='Регистрация',
-                                           form=form,
-                                           message="Пароли не совпадают!")
+                                   form=form,
+                                   message="Пароли не совпадают!")
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
-        user = User (
+        user = User(
             name=form.name.data,
             email=form.email.data,
             about=form.about.data
@@ -89,7 +89,7 @@ def reqister():
         db_sess.add(user)
         db_sess.commit()
         return redirect('/login')
-    return render_template('register.html', title='Регистрация', form=form, 
+    return render_template('register.html', title='Регистрация', form=form,
                            message='')
 
 
@@ -98,18 +98,20 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        user = db_sess.query(User).filter(
+            User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
             return redirect("/")
         return render_template('login.html',
                                message="Неправильный логин или пароль",
                                form=form)
-    return render_template('login.html', title='Авторизация', form=form, 
+    return render_template('login.html', title='Авторизация', form=form,
                            message='')
 
 
-def main():  
+@app.route('/create_page', methods=['GET', 'POST'])
+def main():
     db_session.global_init("db/database.db")
     app.run(port=8080, host='127.0.0.1')
 
