@@ -2,20 +2,26 @@
 <h2 id='h2'>Мой профиль</h2>
 <div id='profile-container' class="container-fluid bg-light">
     <div class="row">
-        <div class="col-6">
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        The current link item
-                      </a> <a href="#" class="list-group-item list-group-item-action">A second link item</a> <a href="#" class="list-group-item list-group-item-action">A third link item</a> <a href="#" class="list-group-item list-group-item-action">A fourth link item</a> <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a> </div>
+        <div class="col-6" id='profile-1'>
+            <div class="list-group" id='list-group'> <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a>
+                      <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> 
+                      {% if current_user.id == 1 %} 
+                          <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> 
+                        {% endif %}
+                      </div>
         </div>
-        <div class="col-6 profile">
+        <div class="col-6 profile" id='profile-photo-1'>
             <div class="col row profile-info">
                 <div class="row">
                     <!--<h3 id='profile-header'>Фото</h3>--><img src="../static/img/logo.png" class="img-fluid" id="profile-photo" alt="..."> </div>
             </div>
         </div>
+        <div class="col profile" id='profile-photo-2'>
+            <!--<h3 id='profile-header'>Фото</h3>--><img src="../static/img/logo.png" class="img-fluid" id="profile-photo" alt="..."> </div>
+        </div>
         <div class="row">
             <div id='profile-info' class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
+                <div class="accordion-item" id='accordion-item'>
                     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
         Accordion Item #1
@@ -25,7 +31,7 @@
                         <div class="accordion-body">{{ current_user.name }}</div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item" id='accordion-item'>
                     <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
         Accordion Item #2
@@ -35,7 +41,7 @@
                         <div class="accordion-body">{{ current_user.about }}</div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item" id='accordion-item'>
                     <h2 class="accordion-header" id="flush-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
         Accordion Item #3
@@ -46,6 +52,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col" id='profile-2'>
+            <div class="list-group" id='list-group'>  <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a>
+                      <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> 
+                      {% if current_user.id == 1 %} 
+                          <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> 
+                        {% endif %}
+                      </div>
         </div>
     </div>
 </div> {% endif %}

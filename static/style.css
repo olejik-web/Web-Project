@@ -7,38 +7,117 @@
     font-family: May;
 }
 
-
-#profile-info {
-    margin-top: 20px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+#list-group {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
 }
 
-#profile-container {
-    width: 60%;
-    padding: 2% 2%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: 1.2rem;
+@media (min-width: 700px) {
+    #profile-info {
+        margin-top: 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    #profile-1 {
+        display: block;
+    }
+    
+    #profile-2 {
+        display: none;
+    }
+    
+    #profile-info #accordion-item h2 button{
+        font-size: 1.3rem;
+    }
+
+    #profile-container {
+        margin-top: 20px;
+        width: 80%;
+        padding: 2% 2%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 1.3rem;
+    }
+
+    #profile-photo {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #profile-header {
+        text-align: center;
+        font-weight: 900;
+        font-size: 2rem;
+    }
+    
+    #profile-photo-2 {
+        display: none;
+    }
+    
+    #profile-photo-1 {
+        display: block;
+    }
+}
+
+@media (max-width: 700px) {
+    #profile-1 {
+        display: none;
+    }
+    
+    #profile-2 {
+        display: block;
+    }
+    
+    #profile-info {
+        margin-top: 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    #profile-info #accordion-item h2 button{
+        font-size: 1.3rem;
+    }
+
+    #profile-container {
+        margin-top: 20px;
+        width: 80%;
+        padding: 2% 2%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 1.3rem;
+    }
+    
+    #profile-photo-2 {
+        display: block;
+    }
+    
+    #profile-photo-1 {
+        display: none;
+    }
+    
+    #profile-photo {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #profile-header {
+        text-align: center;
+        font-weight: 900;
+        font-size: 2rem;
+    }
 }
 
 form {
     width: 70%;
     justify-content: center;
-}
-
-#profile-photo {
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-}
-
-#profile-header {
-    text-align: center;
-    font-weight: 900;
-    font-size: 2rem;
 }
 
 form .btn {
