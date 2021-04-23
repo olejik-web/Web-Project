@@ -3,12 +3,7 @@
 <div id='profile-container' class="container-fluid bg-light">
     <div class="row">
         <div class="col-6" id='profile-1'>
-            <div class="list-group" id='list-group'> <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a>
-                      <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> 
-                      {% if current_user.id == 1 %} 
-                          <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> 
-                        {% endif %}
-                      </div>
+            <div class="list-group" id='list-group'> <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="/create_page/page_of_book" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> {% if current_user.id == 1 %} <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> {% endif %} </div>
         </div>
         <div class="col-6 profile" id='profile-photo-1'>
             <div class="col row profile-info">
@@ -18,50 +13,57 @@
         </div>
         <div class="col profile" id='profile-photo-2'>
             <!--<h3 id='profile-header'>Фото</h3>--><img src="../static/img/logo.png" class="img-fluid" id="profile-photo" alt="..."> </div>
-        </div>
-        <div class="row">
-            <div id='profile-info' class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id='accordion-item'>
-                    <h2 class="accordion-header" id="flush-headingOne">
+    </div>
+    <div class="row">
+        <div id='profile-info' class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Accordion Item #1
+        Логин
       </button>
     </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">{{ current_user.name }}</div>
-                    </div>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{ current_user.name }}</div>
                 </div>
-                <div class="accordion-item" id='accordion-item'>
-                    <h2 class="accordion-header" id="flush-headingTwo">
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Accordion Item #2
+        О себе
       </button>
     </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">{{ current_user.about }}</div>
-                    </div>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{ current_user.about }}</div>
                 </div>
-                <div class="accordion-item" id='accordion-item'>
-                    <h2 class="accordion-header" id="flush-headingThree">
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
+        Email
       </button>
     </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{ current_user.email }}</div>
+                </div>
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            Мои страницы книги
+      </button>
+    </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul class="list-group list-group-flush"> {% for elem in pages %}
+                            <li class="list-group-item"> {{ elem }}</li> {% endfor %} </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col" id='profile-2'>
-            <div class="list-group" id='list-group'>  <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="/create_page/hero" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a>
-                      <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> 
-                      {% if current_user.id == 1 %} 
-                          <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> 
-                        {% endif %}
-                      </div>
-        </div>
     </div>
+    <div class="col" id='profile-2'>
+        <div class="list-group" id='list-group'> <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="/create_page/hero" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> {% if current_user.id == 1 %} <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> {% endif %} </div>
+    </div>
+</div>
 </div> {% endif %}
 <h2 id='h2'>Пользователи</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news heros" style="margin: 0 auto;">

@@ -2,14 +2,17 @@ from datetime import datetime
 from flask import Flask, render_template, redirect, request
 from data import db_session
 from data.users import User
+from data.pages import Page
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms import TextAreaField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 from flask_login import LoginManager, login_user, login_required, logout_user
-import flask_login
+from flask_login import current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf.file import FileField, FileRequired
+from werkzeug.utils import secure_filename
 from PIL import Image
 import os
 
@@ -17,6 +20,16 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+
+class CreatePageForm(FlaskForm):
+    header = StringField('Название страницы',
+                        validators=[DataRequired()])
+    about = TextAreaField("Краткая информация о странице", 
+                          validators=[DataRequired()])
+    photos = FileField('Прикрепите изображения, используемые на странице', 
+                       validators=[FileRequired()])
+    content = TextAreaField("Содержание страницы", validators=[DataRequired()])
 
 
 class LoginForm(FlaskForm):
@@ -32,7 +45,7 @@ class RegisterForm(FlaskForm):
     password_again = PasswordField('Повторите пароль',
                                    validators=[DataRequired()])
     name = StringField('Имя пользователя', validators=[DataRequired()])
-    about = TextAreaField("Немного о себе")
+    about = TextAreaField("Немного о себе", validators=[DataRequired()])
     submit = SubmitField('Регистрация')
 
 
@@ -54,7 +67,11 @@ def book_main():
 
 @app.route('/users')
 def users_main():
-    return render_template('users.html', title='Пользователи')
+    db_sess = db_session.create_session()
+    lst = []
+    for elem in db_sess.query(Page).filter(Page.author == current_user.id):
+        lst.append(elem.header)
+    return render_template('users.html', title='Пользователи', pages=lst)
 
 
 @app.route('/pages')
@@ -110,7 +127,31 @@ def login():
                            message='')
 
 
-@app.route('/create_page', methods=['GET', 'POST'])
+@app.route('/create_page/<page_type>')
+@login_required
+def create_page(page_type):
+    db_sess = db_session.create_session()
+    page = Page()
+    page.author = current_user.id
+    page.type = 'edited'
+    db_sess.add(page)
+    db_sess.commit()
+    return redirect('/users')
+
+
+@app.route('/edit_page/<page_type>/<page_id>', methods=['GET', 'POST'])
+@login_required
+def edit_page(page_type, page_id):
+    if page_type == 'page_of_book':
+        form = CreatePageForm()
+        if form.validate_on_submit():
+            return redirect('/users')
+        else:
+            return render_template('edit_page_of_book.html', 
+                               title='Новая страница книги', 
+                               form=form)
+    
+    
 def main():
     db_session.global_init("db/database.db")
     app.run(port=8080, host='127.0.0.1')
