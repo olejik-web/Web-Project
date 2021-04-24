@@ -12,6 +12,11 @@
     font-size: 1.5rem;
 }
 
+#poge-type {
+    font-size: 1.2rem;
+    float: left;
+}
+
 @media (min-width: 700px) {
     #profile-info {
         margin-top: 20px;

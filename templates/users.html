@@ -55,15 +55,24 @@
                 <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-group list-group-flush"> {% for elem in pages %}
-                            <li class="list-group-item"> {{ elem }}</li> {% endfor %} </ul>
+                            <li class="list-group-item">
+                               <div id="poge-heder">
+                                    {{ elem.header }}
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button id='poge-type' class="btn btn-primary me-md-2" type="button" onclick="document.location='/edit_page/page_of_book${{elem.id}}'">Изменить статью</button>
+                                    <button id='poge-type' class="btn btn-primary" type="button">Удалить статью</button>
+                                    <button id='poge-type' class="btn btn-primary" type="button">Отправить на модерацию</button>
+                                </div>
+                            </li> {% endfor %} </ul>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col" id='profile-2'>
+            <div class="list-group" id='list-group'> <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="/create_page/hero" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> {% if current_user.id == 1 %} <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> {% endif %} </div>
+        </div>
     </div>
-    <div class="col" id='profile-2'>
-        <div class="list-group" id='list-group'> <a href="#" class="list-group-item list-group-item-action">Создать статью</a> <a href="#" class="list-group-item list-group-item-action">Написать историю</a> <a href="/create_page/hero" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать страницу в книгу памяти</a> <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Изменить профиль</a> {% if current_user.id == 1 %} <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Написать новость</a> {% endif %} </div>
-    </div>
-</div>
 </div> {% endif %}
 <h2 id='h2'>Пользователи</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news heros" style="margin: 0 auto;">
