@@ -5,7 +5,7 @@ from data.users import User
 from data.pages import Page
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms import TextAreaField
+from wtforms import TextAreaField, FieldList, FormField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 from flask_login import LoginManager, login_user, login_required, logout_user
@@ -26,7 +26,11 @@ login_manager.init_app(app)
 class PartForm(FlaskForm):
     header = StringField('Название раздела',
                         validators=[DataRequired()])
-    imgs = 
+    img_lst = []
+    load_image = FileField('Прикрепите изображения к разделу', 
+                           validators=[FileRequired()])
+    content = TextAreaField("Текст раздела", 
+                          validators=[DataRequired()])
 
 
 class CreatePageForm(FlaskForm):
@@ -82,19 +86,11 @@ def edit_page(page_info):
         form.about.data = page.about
         with open(page.json_page) as file:
             page_json = json.load(file)
-        form.content = page_json['content']
-        for elem in form.content:
-            elem['header'] = StringField('123',
-                        validators=[DataRequired()])
-            elem['imgs'] = (FileField('Прикрепите изображения к статье', 
-                       validators=[FileRequired()]), elem['imgs'])
-            elem['content'] = TextAreaField("Текст раздела", 
-                          validators=[DataRequired()])
-        print(StringField('123',
-                        validators=[DataRequired()]))
-        print(form.content[0]['header'])
-        print(form.header)
-        
+        for elem in page_json['content']:
+            form.parts.append_entry()
+            form.parts[len(form.parts) - 1].header.data = elem['header']
+            form.parts[len(form.parts) - 1].img_lst = elem['imgs']
+            form.parts[len(form.parts) - 1].content.data = elem['content']
         if form.validate_on_submit():
             return redirect('/users')
         else:

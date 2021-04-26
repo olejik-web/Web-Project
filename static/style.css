@@ -89,6 +89,13 @@
         font-size: 1.3rem;
     }
 
+    #h3 {
+        margin-top: 0px;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    
     #profile-container {
         margin-top: 20px;
         width: 80%;
@@ -309,6 +316,20 @@ footer .nav i {
 
 .span1 {
     display: inline-block;
+}
+
+#part-buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#page-buttons {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#page-buttons button{
+    font-size: 1.8rem;
 }
 
 .logo {
