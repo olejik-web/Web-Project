@@ -16,5 +16,6 @@ class Page(SqlAlchemyBase, UserMixin):
     header = sqlalchemy.Column(sqlalchemy.String)
     about = sqlalchemy.Column(sqlalchemy.String)
     json_page = sqlalchemy.Column(sqlalchemy.String)
+    directory = sqlalchemy.Column(sqlalchemy.String)
     edit_type = sqlalchemy.Column(sqlalchemy.String)
     type = sqlalchemy.Column(sqlalchemy.String)

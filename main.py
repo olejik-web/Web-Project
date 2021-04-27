@@ -16,6 +16,7 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import os
 import json
+import shutil
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -70,7 +71,7 @@ def index():
     return render_template('index.html', title='Главная')
 
 
-@app.route('/edit_page/<page_info>')
+@app.route('/edit_page/<page_info>', methods=['GET', 'POST'])
 @login_required
 def edit_page(page_info):
     db_sess = db_session.create_session()
@@ -92,6 +93,15 @@ def edit_page(page_info):
             form.parts[len(form.parts) - 1].img_lst = elem['imgs']
             form.parts[len(form.parts) - 1].content.data = elem['content']
         if form.validate_on_submit():
+            page.header = form.header.data
+            page.about = form.about.data
+            for i in range(page_json['content']):
+                page_json[i]['header'] = form.parts[i].header.data
+                page_json[i]['imgs'] = form.parts[i].img_lst
+                page_json[i]['content'] = form.parts[i].content.data
+            with open(page.json_page) as file:
+                file.dump(page_json)
+            db_sess.commit()
             return redirect('/users')
         else:
             return render_template('edit_page_of_book.html', 
@@ -179,7 +189,8 @@ def create_page(page_type):
     db_sess = db_session.create_session()
     for elem in db_sess.query(Page).all():
         page = elem
-    os.mkdir('static/img/book_pages/directory{}'.format(page.id))
+    os.mkdir('book_pages/directory{}'.format(page.id))
+    page.directory = 'book_pages/directory{}'.format(page.id)
     json_page = {
         'content': [
             {
@@ -189,14 +200,45 @@ def create_page(page_type):
             }            
         ]
     }
-    with open('static/img/book_pages/directory{}/json_file.json'.format(
+    with open('book_pages/directory{}/json_file.json'.format(
         page.id), 
               'w') as file:
         json.dump(json_page, file)
-    page.json_page = 'static/img/book_pages/directory{}/json_file.json'.format(
+    page.json_page = 'book_pages/directory{}/json_file.json'.format(
         page.id)    
     db_sess.commit()    
     return redirect('/edit_page/page_of_book${}'.format(page.id))
+
+
+@app.route('/adding_part/<params>')
+@login_required
+def adding_part(params):
+    db_sess = db_session.create_session()
+    page_id = int(params.split('$')[1])
+    part_num = int(params.split('$')[2])
+    page = db_sess.query(Page).filter(Page.id == page_id).first()
+    pages = db_sess.query(Page).all()
+    right_num = pages[len(pages) - 1]
+    with open(page.json_page) as file:
+        page_json = json.load(file)
+    tmp = page_json['content'][part_num:]
+    page_json['content'] = page_json['content'][:part_num] + [
+        {'header': 'Раздел{}'.format(right_num + 1), 'imgs': [], 
+         'content': 'Текст раздела {}'.format(right_num + 1)}] + tmp
+    with open(page.json_page, 'w') as file:
+        json.dump(page_json, file)
+    return redirect('/edit_page/page_of_book$1')
+
+
+@app.route('/delete_page/<page_id>')
+@login_required
+def delete_page(page_id):
+    db_sess = db_session.create_session()
+    page = db_sess.query(Page).filter(Page.id == page_id).first()
+    shutil.rmtree(page.directory)
+    db_sess.delete(page)
+    db_sess.commit()
+    return redirect('/users')
 
 
 '''def delete_page():

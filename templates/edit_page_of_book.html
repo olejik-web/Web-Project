@@ -1,40 +1,31 @@
 {% extends "base.html" %} {% block content %}
 <h2 id='h2'>Новая страница книги памяти</h2>
-<form action='' method="post" style='margin: 0 auto;' enctype=multipart/form-data> {{ form.hidden_tag() }}
-   <h3 id='h3' style='margin-top: 40px; margin-bottom: 30px;
+<div>
+    <form action='' method="post" style='margin: 0 auto;' enctype=multipart/form-data> {{ form.hidden_tag() }}
+        <h3 id='h3' style='margin-top: 40px; margin-bottom: 30px;
         font-size: 30px;
         text-align: center;
         font-weight: bold;'>Информация о странице</h3>
-    <div class="mb-3"> {{ form.header.label(class="form-label") }} {{ form.header(style='font-size: 1.4rem;', type="text", class="form-control") }} </div>
-    <div class="mb-3"> {{ form.about.label(class="form-label") }} {{ form.about(style='font-size: 1.4rem;', class="form-control", rows='3') }} </div> 
-    <h3 id='h3' style='margin-top: 40px;
+        <div class="mb-3"> {{ form.header.label(class="form-label") }} {{ form.header(style='font-size: 1.4rem;', type="text", class="form-control") }} </div>
+        <div class="mb-3"> {{ form.about.label(class="form-label") }} {{ form.about(style='font-size: 1.4rem;', class="form-control", rows='3') }} </div>
+        <h3 id='h3' style='margin-top: 40px;
        margin-bottom: 30px;
         font-size: 30px;
         text-align: center;
-        font-weight: bold;'>Содержание страницы</h3>
-    {% for elem in form.parts %}
-    <div class="mb-3"> {{ elem.header.label(class="form-label") }} {{ elem.header(style='font-size: 1.4rem;', type="text", class="form-control") }} {{ elem.load_image.label(class="form-label", style='margin-top: 20px;') }} {{ elem.load_image(style='font-size: 1.4rem; width: 30%;', class="form-control", type="file") }}
-        {% if elem.img_lst %}
+        font-weight: bold;'>Содержание страницы</h3> {% for elem in form.parts %}
+        <div class="mb-3"> {{ elem.header.label(class="form-label") }} {{ elem.header(style='font-size: 1.4rem;', type="text", class="form-control") }} {{ elem.load_image.label(class="form-label", style='margin-top: 20px;') }} {{ elem.load_image(style='font-size: 1.4rem; width: 30%;', class="form-control", type="file") }} {% if elem.img_lst %}
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                   {% for path in elem.img_lst %}
-                    <div class="carousel-item"> <img src="{{ path }}" class="d-block w-100" alt="..."> </div>
-                    {% endfor %}
-                </div>
+                <div class="carousel-inner"> {% for path in elem.img_lst %}
+                    <div class="carousel-item"> <img src="{{ path }}" class="d-block w-100" alt="..."> </div> {% endfor %} </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span> </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span> </button>
-            </div>
-        {% endif %}
-    {{ elem.content.label(class="form-label", style='margin-top: 20px;') }}
-    {{ elem.content(class="form-control", rows='15', style='font-size: 1.4rem;') }} 
-    <div class="md-3" id='part-buttons'>
-        <button type="button" class="btn btn-success">Добавить раздел</button>
-        <button type="button" class="btn btn-danger">Удалить раздел</button>
-    </div>
-    {% endfor %}
-    </div>
-    <div class="col-12" id=page-buttons>
-        <button type="button" class="btn btn-primary btn-lg">Отправить страницу на модерацию</button>
-        <button type="button" class="btn btn-primary btn-lg">Сохранить страницу</button>
-    </div>
-</form> {% endblock %}
+            </div> {% endif %} {{ elem.content.label(class="form-label", style='margin-top: 20px;') }} {{ elem.content(class="form-control", rows='15', style='font-size: 1.4rem;') }}
+            <div class="md-3" id='part-buttons'>
+                <button type="button" class="btn btn-success" onclick="document.location='/adding_part/{{page.type}}${{page.id}}${{loop.index}}'">Добавить раздел</button>
+                <button type="button" class="btn btn-danger">Удалить раздел</button>
+            </div> {% endfor %} </div>
+        <div class="col-12" id=page-buttons>
+            <button type="submit" class="btn btn-primary btn-lg">Сохранить страницу</button>
+        </div>
+    </form>
+</div> {% endblock %}

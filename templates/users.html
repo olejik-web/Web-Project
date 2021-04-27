@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button id='poge-type' class="btn btn-primary me-md-2" type="button" onclick="document.location='/edit_page/page_of_book${{elem.id}}'">Изменить статью</button>
-                                    <button id='poge-type' class="btn btn-primary" type="button">Удалить статью</button>
+                                    <button id='poge-type' class="btn btn-primary" type="button" onclick="document.location='/delete_page/{{elem.id}}'">Удалить статью</button>
                                     <button id='poge-type' class="btn btn-primary" type="button">Отправить на модерацию</button>
                                 </div>
                             </li> {% endfor %} </ul>
