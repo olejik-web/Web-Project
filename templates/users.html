@@ -59,7 +59,10 @@
                                <div id="poge-heder">
                                     {{ elem.header }}
                                 </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <div class="page-body">
+                                    {{ elem.about }}
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-start" style='margin-bottom: 10px;'>
                                     <button id='poge-type' class="btn btn-primary me-md-2" type="button" onclick="document.location='/edit_page/page_of_book${{elem.id}}'">Изменить статью</button>
                                     <button id='poge-type' class="btn btn-primary" type="button" onclick="document.location='/delete_page/{{elem.id}}'">Удалить статью</button>
                                     <button id='poge-type' class="btn btn-primary" type="button">Отправить на модерацию</button>

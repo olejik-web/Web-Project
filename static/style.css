@@ -309,6 +309,10 @@ footer .nav i {
     font-size: 2rem;
 }
 
+footer {
+    width: 100%;
+}
+
 #carouselExampleDark .carousel-inner .carousel-item .carousel-caption {
     margin-bottom: 40px;
     padding: 20px 20px;
@@ -316,6 +320,10 @@ footer .nav i {
 
 .span1 {
     display: inline-block;
+}
+
+#save-page-btn {
+    font-size: 2rem;
 }
 
 #part-buttons {
@@ -335,4 +343,13 @@ footer .nav i {
 .logo {
     background-color: maroon;
     padding: 10px 10px;
+}
+
+#poge-heder {
+    font-weight: bold;
+}
+
+.page-body {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
