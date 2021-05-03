@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% block content %}
+<div style='width: 50%;' id='profile-container' class="container-fluid bg-light">
+    <div class="md-3" id='profile-photo-1' style='width: 80%; margin: 0 auto;'>
+            <div class="col row profile-info">
+                <div class="row">
+                    <!--<h3 id='profile-header'>Фото</h3>-->{% if not profile_image %}
+                        <img src="../static/img/logo.png" class="img-fluid" id="profile-photo" alt="...">
+                    {% else %}
+                        <img src="../{{ profile_image }}" class="img-fluid" id="profile-photo" alt="...">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col profile" id='profile-photo-2'>
+            <!--<h3 id='profile-header'>Фото</h3>-->
+            {% if not profile_image %}
+                <img src="../static/img/logo.png" class="img-fluid" id="profile-photo" alt="..."> </div>
+            {% else %}
+                <img src="../{{ profile_image }}" class="img-fluid" id="profile-photo" alt="..."></div>
+            {% endif %}
+            <div class="row">
+        <div id='profile-info' class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Логин
+      </button>
+    </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{ user.name }}</div>
+                </div>
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        О себе
+      </button>
+    </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{ user.about }}</div>
+                </div>
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        Email
+      </button>
+    </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{ user.email }}</div>
+                </div>
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            Мои страницы книги
+      </button>
+    </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul class="list-group list-group-flush"> {% for elem in pages %}
+                            <li class="list-group-item">
+                               <div id="poge-heder">
+                                    {{ elem.header }}
+                                </div>
+                                <div class="page-body">
+                                    {{ elem.about }}
+                                </div>
+                                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 50%; margin-top: 10px; font-size: 1.2rem;'>Читать мою страницу книги...</a>
+                            </li> 
+                            {% endfor %} </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFour">
+            Мои статьи
+      </button>
+    </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul class="list-group list-group-flush"> {% for elem in articles %}
+                            <li class="list-group-item">
+                               <div id="poge-heder">
+                                    {{ elem.header }}
+                                </div>
+                                <div class="page-body">
+                                    {{ elem.about }}
+                                </div>
+                                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 50%; margin-top: 10px; font-size: 1.2rem;'>Читать мою статью...</a>
+                            </li> 
+                            {% endfor %} </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id='accordion-item'>
+                <h2 class="accordion-header" id="flush-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+            Мои страницы из раздела "История"
+      </button>
+    </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul class="list-group list-group-flush"> {% for elem in history %}
+                            <li class="list-group-item">
+                               <div id="poge-heder">
+                                    {{ elem.header }}
+                                </div>
+                                <div class="page-body">
+                                    {{ elem.about }}
+                                </div>
+                                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 50%; margin-top: 10px; font-size: 1.2rem;'>Читать мою страницу из раздела "История"...</a>
+                            </li> 
+                            {% endfor %} </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

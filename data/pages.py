@@ -12,7 +12,7 @@ class Page(SqlAlchemyBase, UserMixin):
     __tablename__ = 'pages'
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
-    author = sqlalchemy.Column(sqlalchemy.String)
+    author = sqlalchemy.Column(sqlalchemy.Integer)
     header = sqlalchemy.Column(sqlalchemy.String)
     about = sqlalchemy.Column(sqlalchemy.String)
     json_page = sqlalchemy.Column(sqlalchemy.String)

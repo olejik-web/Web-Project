@@ -7,151 +7,100 @@
 </div>
 <h2 id='h2'>Последние новости</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news" style="margin: 0 auto;">
+   {% for elem in news[:3] %}
     <div class="col">
         <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Lorem ipsum dolor sit.</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{elem.header}}</h5>
+                <p class="card-text">{{elem.about}}</p>
+            </div>
+            <div style='text-align: center; margin-bottom: 10px;'>
+                <a href="/read_news/{{elem.id}}" class="btn btn-primary" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Читать новость...</a>
+            {% if current_user.id == 1 %}
+                <a href="/edit_news/{{elem.id}}$0" class="btn btn-success" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Редактировать новость...</a>
+            {% endif %}
+            {% if current_user.id == 1 %}
+                <a href="/delete_news/{{elem.id}}" class="btn btn-danger" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Удалить новость...</a>
+            {% endif %}
             </div>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
+    </div>{% endfor %}
 </div>
 <h2 id='h2'>Самые популярные статьи</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news" style="margin: 0 auto;">
+    {% for elem in articles[:3] %}
     <div class="col">
         <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Lorem ipsum dolor sit.</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{elem.header}}</h5>
+                <p class="card-text">{{elem.about}}</p>
+            </div>
+            <div style='text-align: center; margin-bottom: 10px;'>
+                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Читать статью...</a>
+            {% if current_user.id == 1 %}
+                <a href="/edit_page/article${{elem.id}}$0" class="btn btn-success" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Редактировать статью...</a>
+            {% endif %}
             </div>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
+    </div>{% endfor %}
 </div>
 <h2 id='h2'>Самые просматриваемые страницы книги</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news" style="margin: 0 auto;">
+    {% for elem in pages[:3] %}
     <div class="col">
         <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Lorem ipsum dolor sit.</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{elem.header}}</h5>
+                <p class="card-text">{{elem.about}}</p>
+            </div>
+            <div style='text-align: center; margin-bottom: 10px;'>
+                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Читать страницу книги...</a>
+            {% if current_user.id == 1 %}
+                <a href="/edit_page/page_of_book${{elem.id}}$0" class="btn btn-success" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Редактировать страницу книги...</a>
+            {% endif %}
             </div>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
+    </div>{% endfor %}
 </div>
 <h2 id='h2'>Новые статьи из раздела "История"</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news" style="margin: 0 auto;">
+    {% for elem in history[:3] %}
     <div class="col">
         <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Lorem ipsum dolor sit.</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{elem.header}}</h5>
+                <p class="card-text">{{elem.about}}</p>
+            </div>
+            <div style='text-align: center; margin-bottom: 10px;'>
+                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Читать страницу из раздела "История"...</a>
+            {% if current_user.id == 1 %}
+                <a href="/edit_page/story${{elem.id}}$0" class="btn btn-success" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Редактировать страницу из раздела История...</a>
+            {% endif %}
             </div>
             <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
+    </div>{% endfor %}
 </div>
 <h2 id='h2'>Самые активные пользователи</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 news" style="margin: 0 auto;">
+    {% for elem in users[:3] %}
     <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
+        <div class="card h-100"> 
+          {% if user_images[loop.index - 1] %}
+           <img src="../{{user_images[loop.index - 1]}}" class="card-img-top" alt="..." style='width: 65%; margin: 0 auto; margin-top: 10px;'>{% endif %}
             <div class="card-body">
-                <h5 class="card-title">Lorem ipsum dolor sit.</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{elem.name}}</h5>
+                <p class="card-text">{{elem.about}}</p>
             </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <div style='text-align: center; margin-bottom: 10px;'>
+            <a href="/user_info/{{elem.id}}" class="btn btn-primary" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Смотреть профиль...</a>
+            {% if current_user.id == elem.id %}
+                <a href="/edit_user/{{elem.id}}" class="btn btn-success" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Редактировать профиль...</a>
+            {% endif %}
             </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-        </div>
-    </div>
+    </div>{% endfor %}
 </div>{% endblock %}

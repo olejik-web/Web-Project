@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% block content %}
+    <h2 id='h2'>История</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 news heros" style="margin: 0 auto;">
+    {% for elem in history[:3] %}
+    <div class="col">
+        <div class="card h-100"> <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{elem.header}}</h5>
+                <p class="card-text">{{elem.about}}</p>
+            </div>
+            <div style='text-align: center; margin-bottom: 10px;'>
+                <a href="/read_page/{{elem.id}}" class="btn btn-primary" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Читать страницу из раздела "История"...</a>
+            {% if current_user.id == 1 %}
+                <a href="/edit_page/story${{elem.id}}$0" class="btn btn-success" style='width: 70%; margin-top: 10px; font-size: 1.2rem;'>Редактировать страницу из раздела История...</a>
+            {% endif %}
+            </div>
+            <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
+        </div>
+    </div>{% endfor %}
+</div>
+{% endblock %}

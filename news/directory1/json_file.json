@@ -1,0 +1,28 @@
+{
+  "content": [
+    {
+      "header": "Очень до невозможности длинное название этого раздела!",
+      "imgs": [
+        7,
+        8,
+        9,
+        10,
+        13
+      ],
+      "content": "{% extends \"base.html\" %} {% block content %}\r\n<h2 id='h2'>{{ news.header }}</h2>\r\n<div class=\"mb-3\" style='width: 70%; font-size: 1.6rem; margin: 0 auto;'>\r\n    {{news.about}}\r\n</div>\r\n{% for elem in json['content']%}\r\n<h3 id='h3' style='margin-top: 40px; margin-bottom: 30px;\r\nfont-size: 30px;\r\ntext-align: center;\r\nfont-weight: bold;'>{{elem.header}}</h3>\r\n<div class=\"mb-3\" style='width: 70%; font-size: 1.6rem; margin: 0 auto;'>\r\n    {{elem.content}}\r\n</div>\r\n    <div class=\"mb-3\">\r\n        {% if images[loop.index] %}\r\n        <div id=\"carouselExampleControls\" class=\"carousel slide\" data-bs-ride=\"carousel\" style='width: 40%; margin: 0 auto; margin-top: 20px;'>\r\n            <div class=\"carousel-inner\">\r\n               <div class=\"carousel-item active\" data-bs-interval=\"10000\"> <img src=\"../{{images[loop.index][0]}}\" class=\"d-block w-100\" alt=\"...\"> </div>{% for path in images[loop.index][1:] %}\r\n                <div class=\"carousel-item\" data-bs-interval=\"10000\"> <img src=\"../{{path}}\" class=\"d-block w-100\" alt=\"...\"> </div> {% endfor %} </div>\r\n            <button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#carouselExampleControls\" data-bs-slide=\"prev\"> <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span> <span class=\"visually-hidden\">Previous</span> </button>\r\n            <button class=\"carousel-control-next\" type=\"button\" data-bs-target=\"#carouselExampleControls\" data-bs-slide=\"next\"> <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span> <span class=\"visually-hidden\">Next</span> </button>\r\n            {% endif %}\r\n        </div></div>\r\n{% endfor %}\r\n{% endblock %}"
+    },
+    {
+      "header": "Раздел3",
+      "imgs": [],
+      "content": "Текст раздела 3"
+    },
+    {
+      "header": "Второе, ну просто очень невыносимо нереально фантастично не статично юмористично не самое ичное название этого раздела, которое я же устал писать!",
+      "imgs": [
+        11,
+        12
+      ],
+      "content": "{% extends \"base.html\" %} {% block content %}\r\n<h2 id='h2'>Регистрация</h2> \r\n<form action='' method=\"post\" style='margin: 0 auto;'> {{ form.hidden_tag() }}\r\n    <div class=\"mb-3\"> {{ form.email.label(class=\"form-label\") }} {{ form.email(style='font-size: 1.4rem;', type=\"email\", class=\"form-control\") }}\r\n        </div>\r\n    <div class=\"mb-3\">\r\n        <label for=\"inputPassword4\" class=\"form-label\">{{ form.password.label }}</label>\r\n        <div>{{ form.password(style='font-size: 1.4rem;', type=\"password\", class=\"form-control\") }}</div></div>\r\n    <div class=\"mb-3\">\r\n        <label class=\"form-label\">{{ form.password_again.label }}</label>\r\n        <div>{{ form.password_again(style='font-size: 1.4rem;', type=\"text\", class=\"form-control\") }}</div>\r\n    </div>\r\n    <div class=\"mb-3\">\r\n        <label class=\"form-label\">{{ form.name.label }}</label>\r\n        <div>{{ form.name(style='font-size: 1.4rem;', type=\"text\", class=\"form-control\") }}</div>\r\n    </div> \r\n    <div class=\"mb-3\">\r\n        <label for=\"exampleFormControlTextarea1\" class=\"form-label\">{{ form.about.label }}</label>\r\n        <div>{{ form.about(style='font-size: 1.4rem;', class=\"form-control\", rows=\"3\") }}</div>\r\n    </div>\r\n    {% if message != '' %}\r\n        <div class=\"alert alert-danger\" role=\"alert\"> {{ message }} </div>\r\n    {% endif %}\r\n    <div class=\"col-12\">\r\n        <button type=\"submit\" class=\"btn btn-primary\">Зарегистрироваться!</button>\r\n    </div>\r\n</form> {% endblock %}"
+    }
+  ]
+}

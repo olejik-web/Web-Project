@@ -21,6 +21,8 @@ class User(SqlAlchemyBase, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, unique=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String)
     about = sqlalchemy.Column(sqlalchemy.String)
+    image = sqlalchemy.Column(sqlalchemy.Integer)
+    type = sqlalchemy.Column(sqlalchemy.String)
     # jobs = orm.relation("Jobs", back_populates='user')
     # departments = orm.relation("Departments", back_populates='user')
     

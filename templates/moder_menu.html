@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<h2 id='h2'>Панель модерации</h2>
+<div style='display: flex; width: 90%; margin: 0 auto;'>
+    <div style='width: 25%; margin-right: 5%; font-size: 1.4rem;' class="list-group">
+    <a href="#first" class="list-group-item list-group-item-action" aria-current="true">Опубликованные страницы сайта
+      </a>
+     <a href="#second" class="list-group-item list-group-item-action" aria-current="true">Пользовательские страницы сайта
+      </a>
+    </div>
+    <div style='width: 66%; padding: 2% 2%;'>
+        <h3 id='first' style='font-size: 2.2rem; font-weight: bold; text-align: center;'>Опубликованные страницы сайта</h3>
+       {% for elem in publicated_pages %}
+            <h4 style='font-size: 1.6rem;'>{{elem.header}}</h4>
+            <p style='font-size: 1.3rem;'>{{elem.about}}</p>
+            <p style='font-size: 1.3rem;'>{{elem.author}}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start" style='margin-bottom: 20px;'>
+                <button id='poge-type' class="btn btn-primary me-md-2" type="button" onclick="document.location='/edit_page/page_of_book${{elem.id}}$0'">Изменить страницу</button>
+                <button id='poge-type' class="btn btn-primary" type="button" onclick="document.location='/delete_page/{{elem.id}}'">Удалить страницу</button>
+            </div>
+        {% endfor %}
+        <h3 id='second' style='font-size: 2.2rem; font-weight: bold; text-align: center;'>Пользовательские страницы сайта</h3>
+        {% for elem in edited_pages %}
+            <h4 style='font-size: 1.6rem;'>{{elem.header}}</h4>
+            <p style='font-size: 1.3rem;'>{{elem.about}}</p>
+            <p style='font-size: 1.3rem;'>{{elem.author}}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start" style='margin-bottom: 20px;'>
+                <button id='poge-type' class="btn btn-primary me-md-2" type="button" onclick="document.location='/edit_page/page_of_book${{elem.id}}$0'">Изменить страницу</button>
+                <button id='poge-type' class="btn btn-primary" type="button" onclick="document.location='/delete_page/{{elem.id}}'">Удалить страницу</button>
+                <button id='poge-type' class="btn btn-primary" type="button" onclick="document.location='/public_page/{{elem.id}}'">Опубликовать</button>
+            </div>
+        {% endfor %}
+    </div>
+</div> {% endblock %}

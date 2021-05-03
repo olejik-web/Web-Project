@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<h2 id='h2'>{{ news.header }}</h2>
+<div class="mb-3" style='width: 70%; font-size: 1.6rem; margin: 0 auto;'>
+    {{news.about}}
+</div>
+{% for elem in json['content']%}
+<h3 id='h3' style='width: 50%; margin: 0 auto; margin-top: 40px; margin-bottom: 30px;
+font-size: 30px;
+text-align: center;
+font-weight: bold;' >{{elem.header}}</h3>
+<div class="mb-3" style='width: 70%; font-size: 1.6rem; margin: 0 auto;'>
+    {{elem.content}}
+</div>
+    <div class="mb-3">
+        {% if images[loop.index - 1] %}
+        <div id="carouselExampleControls{{loop.index}}" class="carousel slide" data-bs-ride="carousel" style='width: 40%; margin: 0 auto; margin-top: 20px;'>
+            <div class="carousel-inner">
+               <div class="carousel-item active" data-bs-interval="10000"> <img src="../{{images[loop.index - 1][0]}}" class="d-block w-100" alt="..."> </div>{% for path in images[loop.index - 1][1:] %}
+                <div class="carousel-item" data-bs-interval="10000"> <img src="../{{path}}" class="d-block w-100" alt="..."> </div> {% endfor %} </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls{{loop.index}}" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span> </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls{{loop.index}}" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span> </button>
+            {% endif %}
+        </div></div>
+{% endfor %}
+{% endblock %}
